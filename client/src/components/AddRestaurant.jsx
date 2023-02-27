@@ -4,7 +4,7 @@ const AddRestaurant = () => {
   return (
     <div class="mb-4">
       <form action="">
-        <div class="form-inline">
+        <div class="row">
           <div class="col">
             <input type="text" class="form-control" placeholder="Name"/>
           </div>
@@ -21,7 +21,9 @@ const AddRestaurant = () => {
               <option value="5">$$$$$</option>
             </select>
           </div>
-          <button class="btn btn-primary">Add</button>
+          <div class="col">
+            <button class="btn btn-primary">Add</button>
+          </div>
         </div>
       </form>
     </div>
