@@ -2,17 +2,17 @@ import React from 'react';
 
 const AddRestaurant = () => {
   return (
-    <div className="mb-4">
+    <div class="mb-4">
       <form action="">
-        <div className="form-inline">
-          <div className="col">
-            <input type="text" className="form-control" placeholder="Name"/>
+        <div class="form-inline">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Name"/>
           </div>
-          <div className="col">
-            <input type="text" className="form-control" placeholder="Location"/>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Location"/>
           </div>
-          <div className="col">
-            <select className="custom-select my-1 mr-sm-2">
+          <div class="col">
+            <select class="custom-select my-1 mr-sm-2">
               <option disabled>Price Range</option>
               <option value="1">$</option>
               <option value="2">$$</option>
@@ -21,7 +21,7 @@ const AddRestaurant = () => {
               <option value="5">$$$$$</option>
             </select>
           </div>
-          <button className="btn btn-primary">Add</button>
+          <button class="btn btn-primary">Add</button>
         </div>
       </form>
     </div>
