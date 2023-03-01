@@ -1,8 +1,10 @@
 import React, { useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { RestaurantsContext } from '../context/RestaurantsContext';
 
 const RestaurantList = (props) => {
+  const navigate = useNavigate();
   const {restaurants, setRestaurants} = useContext(RestaurantsContext);
   useEffect(() => {
     //Define fetchData function in useEffect function to handle api calls
@@ -24,10 +26,13 @@ const RestaurantList = (props) => {
       setRestaurants(restaurants.filter(restaurant => {
         return restaurant.id !== id
       }));
-      console.log(response);
     } catch (err) {
-
+      console.log(err);
     };
+  };
+
+  const handleUpdate = (id) => {
+    navigate(`/restaurants/${id}/update`)
   };
 
   return (
@@ -54,7 +59,7 @@ const RestaurantList = (props) => {
                   <td>{"$".repeat(restaurant.price_range)}</td>
                   <td>Reviews</td>
                   <td>
-                    <button class="btn btn-warning">Update</button>
+                    <button onClick={() => handleUpdate(restaurant.id)} class="btn btn-warning">Update</button>
                   </td>
                   <td>
                     {/* Function is added to onClick event handler so that code is run only if button is clicked */}
