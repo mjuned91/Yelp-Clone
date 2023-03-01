@@ -8,6 +8,7 @@ const app = express();
 
 const port = process.env.PORT || 3001;
 
+//cors middleware added so react server and backend server domains are the same
 app.use(cors());
 app.use(express.json());
 

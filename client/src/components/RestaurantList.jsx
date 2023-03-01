@@ -5,6 +5,7 @@ import { RestaurantsContext } from '../context/RestaurantsContext';
 const RestaurantList = (props) => {
   const {restaurants, setRestaurants} = useContext(RestaurantsContext);
   useEffect(() => {
+    //Define fetchData function in useEffect function to handle api calls
     const fetchData = async () => {
       try {
         const response = await RestaurantFinder.get("/");
