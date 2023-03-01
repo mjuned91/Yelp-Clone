@@ -1,18 +1,21 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 
 const AddRestaurant = () => {
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [priceRange, setPriceRange] = useState("Price Range");
   return (
     <div class="mb-4">
       <form action="">
         <div class="row">
           <div class="col">
-            <input type="text" class="form-control" placeholder="Name"/>
+            <input value={name} onChange={e => setName(e.target.value)} type="text" class="form-control" placeholder="Name"/>
           </div>
           <div class="col">
-            <input type="text" class="form-control" placeholder="Location"/>
+            <input value={location} onChange={e => setLocation(e.target.value)} type="text" class="form-control" placeholder="Location"/>
           </div>
           <div class="col">
-            <select class="custom-select my-1 mr-sm-2">
+            <select value={priceRange} onChange={e => setPriceRange(e.target.value)} class="custom-select my-1 mr-sm-2">
               <option disabled>Price Range</option>
               <option value="1">$</option>
               <option value="2">$$</option>
