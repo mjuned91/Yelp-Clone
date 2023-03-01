@@ -1,9 +1,24 @@
 import React ,{ useState } from 'react';
+import RestaurantFinder from '../apis/RestaurantFinder';
 
 const AddRestaurant = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("Price Range");
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const response = await RestaurantFinder.post("/", {
+        name,
+        location, 
+        price_range: priceRange
+      });
+      console.log(response);
+    } catch (err) {
+
+    };
+  };
   return (
     <div class="mb-4">
       <form action="">
@@ -25,7 +40,7 @@ const AddRestaurant = () => {
             </select>
           </div>
           <div class="col">
-            <button class="btn btn-primary">Add</button>
+            <button onClick={handleSubmit} type="submit" class="btn btn-primary">Add</button>
           </div>
         </div>
       </form>
