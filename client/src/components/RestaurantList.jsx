@@ -18,6 +18,18 @@ const RestaurantList = (props) => {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await RestaurantFinder.delete(`/${id}`);
+      setRestaurants(restaurants.filter(restaurant => {
+        return restaurant.id !== id
+      }));
+      console.log(response);
+    } catch (err) {
+
+    };
+  };
+
   return (
     <div class="list-group">
       <table class="table table-hover table-dark">
@@ -45,7 +57,8 @@ const RestaurantList = (props) => {
                     <button class="btn btn-warning">Update</button>
                   </td>
                   <td>
-                    <button class="btn btn-danger">Delete</button>
+                    {/* Function is added to onClick event handler so that code is run only if button is clicked */}
+                    <button onClick={() => handleDelete(restaurant.id)} class="btn btn-danger">Delete</button>
                   </td>
                 </tr>
               )
