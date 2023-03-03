@@ -35,6 +35,10 @@ const RestaurantList = (props) => {
     navigate(`/restaurants/${id}/update`)
   };
 
+  const handleRestaurantSelect = (id) => {
+    navigate(`/restaurants/${id}`)
+  };
+
   return (
     <div class="list-group">
       <table class="table table-hover table-dark">
@@ -53,7 +57,7 @@ const RestaurantList = (props) => {
           {restaurants &&
             restaurants.map((restaurant) => {
               return (
-                <tr key={restaurant.id}>
+                <tr onClick={() => handleRestaurantSelect(restaurant.id)} key={restaurant.id}>
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
                   <td>{"$".repeat(restaurant.price_range)}</td>
