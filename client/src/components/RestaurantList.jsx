@@ -20,7 +20,9 @@ const RestaurantList = (props) => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (e, id) => {
+    // 
+    e.stopPropagation();
     try {
       const response = await RestaurantFinder.delete(`/${id}`);
       setRestaurants(restaurants.filter(restaurant => {
@@ -31,7 +33,8 @@ const RestaurantList = (props) => {
     };
   };
 
-  const handleUpdate = (id) => {
+  const handleUpdate = (e, id) => {
+    e.stopPropagation();
     navigate(`/restaurants/${id}/update`)
   };
 
@@ -63,11 +66,11 @@ const RestaurantList = (props) => {
                   <td>{"$".repeat(restaurant.price_range)}</td>
                   <td>Reviews</td>
                   <td>
-                    <button onClick={() => handleUpdate(restaurant.id)} class="btn btn-warning">Update</button>
+                    <button onClick={(e) => handleUpdate(e, restaurant.id)} class="btn btn-warning">Update</button>
                   </td>
                   <td>
                     {/* Function is added to onClick event handler so that code is run only if button is clicked */}
-                    <button onClick={() => handleDelete(restaurant.id)} class="btn btn-danger">Delete</button>
+                    <button onClick={(e) => handleDelete(e, restaurant.id)} class="btn btn-danger">Delete</button>
                   </td>
                 </tr>
               )
