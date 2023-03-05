@@ -21,7 +21,8 @@ const RestaurantDetailPage = () => {
   }, []);
   return (
     <div>
-      {selectedRestaurant.name}
+      {/* Only when selectedRestaurant is defined, the restaurant name will render */}
+      {selectedRestaurant && selectedRestaurant.name}
     </div>
   );
 };
