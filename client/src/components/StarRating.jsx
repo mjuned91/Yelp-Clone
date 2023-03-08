@@ -5,6 +5,7 @@ const StarRating = ({ rating }) => {
   for (let i = 1; i <= 5; i++) {
     if (i <= rating) {
       stars.push(<i class="fas fa-star text-warning"></i>)
+    //Checks if there is a rating and if its a decimal
     } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
       stars.push(<i class="fas fa-star-half-alt text-warning"></i>)
     } else {

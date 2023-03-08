@@ -1,18 +1,22 @@
 import React from 'react';
 import StarRating from './StarRating';
 
-const Reviews = () => {
+const Reviews = ( {reviews} ) => {
   return (
     <div class="row row-cols-3 mb-2">
-      <div class="card text-white bg-primary mb-3 mr-4" style={{maxWidth: "30%"}}>
-        <div class="card-header d-flex justify-content-between">
-          <span>Joan</span>
-          <span><StarRating rating={3.7}/></span>
-        </div>
-        <div class="card-body">
-          <p class="card-text">This restaurant is alright.</p>
-        </div>
-      </div>
+      {reviews.map((review) => {
+        return (
+          <div class="card text-white bg-primary mb-3 mr-4" style={{maxWidth: "30%"}}>
+            <div class="card-header d-flex justify-content-between">
+              <span>{review.name}</span>
+              <span><StarRating rating={review.rating}/></span>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{review.review}</p>
+            </div>
+          </div>
+        );
+      })};
     </div>
   );
 };
