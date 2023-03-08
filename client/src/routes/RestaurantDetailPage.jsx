@@ -4,6 +4,7 @@ import { RestaurantsContext } from '../context/RestaurantsContext';
 import RestaurantFinder from "../apis/RestaurantFinder"
 import StarRating from '../components/StarRating';
 import Reviews from '../components/Reviews';
+import AddReview from '../components/AddReview';
 
 const RestaurantDetailPage = () => {
   const { id } = useParams();
@@ -29,8 +30,9 @@ const RestaurantDetailPage = () => {
           <div class="mt-3">
             <Reviews/>
           </div>
+          <AddReview/>
         </>
-      )};
+      )}
     </div>
   );
 };
