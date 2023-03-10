@@ -27,6 +27,7 @@ const RestaurantDetailPage = () => {
       {/* Only when selectedRestaurant is defined, the restaurant name will render */}
       {selectedRestaurant && (
         <>
+          <h1 class="text-center display-1">{selectedRestaurant.restaurant.name}</h1>
           <div class="mt-3">
             <Reviews reviews={selectedRestaurant.reviews}/>
           </div>
