@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import RestaurantFinder from '../apis/RestaurantFinder';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 
 const AddReview = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState("Select");
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
-    const response = await RestaurantFinder.post(`/${id}/addReview`, {
-      name,
-      review: reviewText,
-      rating
-    });
-    console.log(response);
+    try{
+      const response = await RestaurantFinder.post(`/${id}/addReview`, {
+        name,
+        review: reviewText,
+        rating
+      });
+      navigate("/");
+      navigate(location.pathname);
+    } catch (err) {
+      console.log(err);
+    };
   };
-
+  
   return (
     <div class="mb-2">
       <form action="">

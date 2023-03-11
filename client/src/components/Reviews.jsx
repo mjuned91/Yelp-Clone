@@ -15,8 +15,8 @@ const Reviews = ( {reviews} ) => {
               <p class="card-text">{review.review}</p>
             </div>
           </div>
-        );
-      })};
+        )
+      })}
     </div>
   );
 };
