@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import RestaurantFinder from "../apis/RestaurantFinder";
 import { RestaurantsContext } from '../context/RestaurantsContext';
+import StarRating from './StarRating'
 
 const RestaurantList = (props) => {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ const RestaurantList = (props) => {
   }, []);
 
   const handleDelete = async (e, id) => {
-    // 
     e.stopPropagation();
     try {
       const response = await RestaurantFinder.delete(`/${id}`);
@@ -40,6 +40,15 @@ const RestaurantList = (props) => {
 
   const handleRestaurantSelect = (id) => {
     navigate(`/restaurants/${id}`)
+  };
+
+  const renderRating = (restaurant) => {
+    return (
+      <>
+        <StarRating rating={restaurant.id}/>
+        <span class="text-warning ml-1">({restaurant.count})</span>
+      </>
+    );
   };
 
   return (
@@ -64,7 +73,7 @@ const RestaurantList = (props) => {
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
                   <td>{"$".repeat(restaurant.price_range)}</td>
-                  <td>Reviews</td>
+                  <td>{renderRating(restaurant)}</td>
                   <td>
                     <button onClick={(e) => handleUpdate(e, restaurant.id)} class="btn btn-warning">Update</button>
                   </td>
